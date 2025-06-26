@@ -1,8 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import './styles/index.css';
-import './styles/layout.css';
+import "./styles/index.css";
+import "./styles/layout.css";
+import HomePage from "./pages/HomePage.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
+import ProductsPage from "./pages/ProductsPage.jsx";
 
 // Router components:
 import App from "./App.jsx";
@@ -15,10 +18,22 @@ const router = createBrowserRouter([
     errorElement: <div>Error!</div>, // for all other errors than 404
     children: [
       {
-          path: "/about",
-
-      }
-    ]
+        index: true, //this will be shown by default
+        element: <HomePage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/products",
+        element: <ProductsPage/>,
+      },
+      {
+        path: "/product/:productId",
+        element: <ProductPage />,
+      },
+    ],
   },
   {
     path: "/about",
